@@ -1,0 +1,185 @@
+﻿@model mvc29jully.Models.Student
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<style>
+    .form-group{
+        max-width:550px;
+    }
+    .form-control{
+             border-radius:0px;
+             margin-top:7px;
+        }
+        .form-horizontal{
+            margin-left:290px;
+        }
+         .mycont{
+             margin:auto;
+         }
+        .heading{
+             margin-left:140px;
+        }
+       .Radio{
+
+           margin-right:10px;
+
+       }
+          
+       .checkbox input[type=checkbox], .checkbox-inline input[type=checkbox],.radio-inline input[type=radio] {
+    position: absolute;
+    margin-top: 4px\9;
+    margin-left: 5px;
+}
+       .vaibhav{
+           padding-right:350px;
+       }
+       .change{
+           float:right;
+       }
+       .change1{
+           float:right;
+       }
+    .mycont {
+        margin: auto;
+    }
+</style>
+
+</head>
+<body class="container mycont">
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    
+    
+    @using (Html.BeginForm()) 
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <center class="vaibhav"><h4>Student Registration</h4></center>
+           
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter name" } })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Age, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Age, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Age" } })
+                    @Html.ValidationMessageFor(model => model.Age, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control",@placeholder="Enter Email", }})
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Qualification, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                <div class="row">
+                    @*<div class="col-md-6 ">
+                <div class="checkbox checkbox-Default">
+                    <input id="checkbox1" type="checkbox">
+                    <label for="checkbox1">
+                        B.E.
+                    </label>
+                    <div class="innercheck">
+                        <input id="checkbox2" type="checkbox" checked="">
+                        <label for="checkbox2">
+                            MCA
+                        </label>
+                    </div>
+                </div>
+               <div class="checkbox  checkbox-Default">
+                    <input id="checkbox3" type="checkbox">
+                    <label for="checkbox3">
+                        B.Tech
+                    </label>
+                    <div class="innercheck">
+                        <input id="checkbox4" type="checkbox">
+                        <label for="checkbox4">
+                            PHD
+                        </label>
+                        </div>
+                    </div>
+            </div>*@
+
+                    <div class="col-md-6">
+                        <div>
+                            @Html.RadioButtonFor(model => model.Qualification, "B.E.", new { id = "B.E." })
+                            @Html.Label("B.E", "B.E.")
+                        </div>
+                        <div class="innerradio">
+                            @Html.RadioButtonFor(model => model.Qualification, "MCA", new { id = "MCA" })
+                            @Html.Label("MCA", "MCA")
+                        </div>
+
+
+
+                        <div>
+                            @Html.RadioButtonFor(model => model.Qualification, "B.Tech", new { id = "B.Tech" })
+                            @Html.Label("B.Tech", "B.Tech")
+                        </div>
+                        <div class="innerradio">
+                            @Html.RadioButtonFor(model => model.Qualification, "PHD", new { id = "PHD" })
+                            @Html.Label("PHD", "PHD")
+                        </div>
+                   
+                </div>
+                    @Html.ValidationMessageFor(model => model.Qualification, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10 ">
+                    @*<label class="radio-inline">
+                            <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">Married
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">Unmarried
+                        </label>*@
+                    @Html.RadioButtonFor(model => model.Status, "Married", new { id = "Married" })
+                    @Html.Label("Married", "Married")
+
+                    @Html.RadioButtonFor(model => model.Status, "Unmarried", new { id = "Unmarried" })
+                    @Html.Label("Unmarried", "Unmarried")
+                    @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-4 col-md-8">
+                    <input type="button" value="Reset" class="btn btn-danger" />
+
+                    <input type="submit" value="Save Details" class="btn btn-success" />
+                </div>
+            </div>
+        </div>
+    }
+    
+    
+</body>
+</html>
